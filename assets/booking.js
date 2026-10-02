@@ -18,6 +18,7 @@ const DETAIL_LABELS = {
 };
 
 const WHATSAPP_NUMBER = '84817060066';
+const IDEMPOTENCY_KEY = 'jotrip-sea-pending-idempotency';
 const form = document.querySelector('[data-request-form]');
 const params = new URLSearchParams(window.location.search);
 const codeNode = document.querySelector('[data-request-code]');
@@ -26,6 +27,8 @@ const listNode = document.querySelector('[data-summary-list]');
 const carried = document.querySelector('[data-carried-details]');
 const chips = document.querySelector('[data-detail-chips]');
 const copyButton = document.querySelector('[data-copy-request]');
+const submitButton = document.querySelector('[data-submit-request]');
+const fallbackButton = document.querySelector('[data-fallback-whatsapp]');
 const noteNode = document.querySelector('[data-send-note]');
 
 const today = new Date();
@@ -33,26 +36,10 @@ const localToday = new Date(today.getTime() - today.getTimezoneOffset() * 60000)
 const dateInput = form.querySelector('[name="date"]');
 dateInput.min = localToday;
 
-function compactDate(value) {
-  return (value || localToday).replaceAll('-', '').slice(2);
+function sitePrefix() {
+  const match = window.location.pathname.match(/^\/([^/]+)\/(?:booking|request)(?:\/|$)/);
+  return match ? `/${match[1]}` : '';
 }
-
-function randomToken() {
-  if (window.crypto?.getRandomValues) {
-    const data = new Uint32Array(1);
-    window.crypto.getRandomValues(data);
-    return data[0].toString(36).slice(0, 4).toUpperCase().padStart(4, '0');
-  }
-  return Math.random().toString(36).slice(2, 6).toUpperCase();
-}
-
-const refSeed = `${params.get('service') || 'sea'}:${params.get('date') || localToday}:${params.get('pax') || ''}`;
-let requestCode = sessionStorage.getItem(`jotrip-sea-ref:${refSeed}`);
-if (!requestCode) {
-  requestCode = `JTSEA-${compactDate(params.get('date'))}-${randomToken()}`;
-  sessionStorage.setItem(`jotrip-sea-ref:${refSeed}`, requestCode);
-}
-codeNode.textContent = requestCode;
 
 function firstNumber(value) {
   const match = String(value || '').match(/\d+/);
@@ -87,6 +74,14 @@ function formDataObject() {
   return Object.fromEntries([...data.entries()].map(([key, value]) => [key, String(value).trim()]));
 }
 
+function productOptions() {
+  return Object.fromEntries(
+    Object.keys(DETAIL_LABELS)
+      .map(key => [key, params.get(key)])
+      .filter(([, value]) => value)
+  );
+}
+
 function summaryRows(data) {
   const rows = [
     ['Ngày đi', data.date || 'Chưa chọn'],
@@ -115,11 +110,11 @@ function renderSummary() {
   });
 }
 
-function buildMessage() {
+function buildMessage({ requestCode = null, trackingUrl = null, manualFallback = false } = {}) {
   const data = formDataObject();
   const lines = [
-    'JOTrip Sea - Check Availability',
-    `Mã request: ${requestCode}`,
+    'JoTrip Sea - Check Availability',
+    `Mã request: ${requestCode || 'Chưa tạo trên hệ thống'}`,
     `Sản phẩm: ${SERVICES[data.service] || data.service}`,
     `Ngày đi: ${data.date || 'Chưa chọn'}`,
     `Số khách: ${data.pax || 'Chưa chọn'}`,
@@ -134,19 +129,20 @@ function buildMessage() {
   lines.push(`Tên khách: ${data.customer_name || 'Chưa nhập'}`);
   if (data.contact) lines.push(`Liên hệ: ${data.contact}`);
   if (data.notes) lines.push(`Ghi chú: ${data.notes}`);
+  if (trackingUrl) lines.push(`Theo dõi: ${trackingUrl}`);
   lines.push('');
   lines.push('Nhờ JoTrip kiểm tra riêng:');
   lines.push('1. Điều kiện biển có phù hợp');
   lines.push('2. Dịch vụ có vận hành');
   lines.push('3. Availability thực tế');
   lines.push('');
+  if (manualFallback) lines.push('Lưu ý: website chưa tạo được record, đây là request gửi thủ công qua WhatsApp.');
   lines.push('Đây là yêu cầu kiểm tra, chưa phải xác nhận đặt chỗ.');
   return lines.join('\n');
 }
 
 function saveDraft() {
-  const data = formDataObject();
-  sessionStorage.setItem('jotrip-sea-request-draft', JSON.stringify(data));
+  sessionStorage.setItem('jotrip-sea-request-draft', JSON.stringify(formDataObject()));
 }
 
 function restoreDraft() {
@@ -158,33 +154,103 @@ function restoreDraft() {
   } catch (_) {}
 }
 
+function getIdempotencyKey() {
+  let key = sessionStorage.getItem(IDEMPOTENCY_KEY);
+  if (!key) {
+    key = window.crypto?.randomUUID?.() || `web-${Date.now()}-${Math.random().toString(36).slice(2)}`;
+    sessionStorage.setItem(IDEMPOTENCY_KEY, key);
+  }
+  return key;
+}
+
+function resetPendingIdentity() {
+  sessionStorage.removeItem(IDEMPOTENCY_KEY);
+  codeNode.textContent = 'JoTrip cấp khi gửi';
+  fallbackButton.hidden = true;
+}
+
+function requestPayload() {
+  const data = formDataObject();
+  return {
+    service: data.service,
+    trip_date: data.date,
+    pax: Number(data.pax),
+    hotel_area: data.area || null,
+    options: productOptions(),
+    customer_name: data.customer_name,
+    customer_contact: data.contact || null,
+    customer_notes: data.notes || null,
+    idempotency_key: getIdempotencyKey()
+  };
+}
+
+function trackingUrl(token) {
+  const path = `${sitePrefix()}/request/?token=${encodeURIComponent(token)}`;
+  return new URL(path, window.location.origin).href;
+}
+
+function setSubmitting(active) {
+  submitButton.disabled = active;
+  submitButton.textContent = active ? 'Đang tạo request...' : 'Tạo request & tiếp tục';
+}
+
+function showManualFallback() {
+  fallbackButton.href = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(buildMessage({ manualFallback: true }))}`;
+  fallbackButton.hidden = false;
+  noteNode.textContent = 'Hệ thống chưa tạo được record. Bạn vẫn có thể gửi thủ công qua WhatsApp; JoTrip sẽ xử lý bằng tay.';
+}
+
 prefill();
 restoreDraft();
 renderSummary();
+
 form.addEventListener('input', () => {
   saveDraft();
   renderSummary();
+  resetPendingIdentity();
 });
 form.addEventListener('change', () => {
   saveDraft();
   renderSummary();
+  resetPendingIdentity();
 });
 
-form.addEventListener('submit', event => {
+form.addEventListener('submit', async event => {
   event.preventDefault();
   if (!form.reportValidity()) return;
   saveDraft();
-  const message = buildMessage();
-  const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
-  noteNode.textContent = 'Đang mở WhatsApp với request đã điền sẵn. JoTrip chỉ xác nhận sau khi ops kiểm tra.';
-  window.location.href = url;
+  fallbackButton.hidden = true;
+  noteNode.textContent = 'Đang tạo record trên hệ thống JoTrip Sea...';
+  setSubmitting(true);
+
+  try {
+    if (!window.JoTripSeaAPI) throw new Error('api_client_missing');
+    const result = await window.JoTripSeaAPI.createRequest(requestPayload());
+    if (!result?.request_code || !result?.public_token) throw new Error('invalid_api_response');
+
+    codeNode.textContent = result.request_code;
+    sessionStorage.removeItem(IDEMPOTENCY_KEY);
+    const url = trackingUrl(result.public_token);
+    sessionStorage.setItem('jotrip-sea-last-request', JSON.stringify({
+      request_code: result.request_code,
+      public_token: result.public_token,
+      tracking_url: url
+    }));
+    noteNode.textContent = 'Request đã được lưu. Đang mở trang theo dõi...';
+    window.location.assign(`${url}${url.includes('?') ? '&' : '?'}new=1`);
+  } catch (error) {
+    console.error('jotrip_sea_request_create_failed', error?.message || error);
+    showManualFallback();
+  } finally {
+    setSubmitting(false);
+  }
 });
 
 copyButton.addEventListener('click', async () => {
   const message = buildMessage();
   try {
     await navigator.clipboard.writeText(message);
-    noteNode.textContent = 'Đã copy nội dung request.';
+    noteNode.textContent = 'Đã copy nội dung request. Đây chưa phải request đã lưu trên hệ thống.';
   } catch (_) {
     const textarea = document.createElement('textarea');
     textarea.value = message;
@@ -195,6 +261,6 @@ copyButton.addEventListener('click', async () => {
     textarea.select();
     document.execCommand('copy');
     textarea.remove();
-    noteNode.textContent = 'Đã copy nội dung request.';
+    noteNode.textContent = 'Đã copy nội dung request. Đây chưa phải request đã lưu trên hệ thống.';
   }
 });
