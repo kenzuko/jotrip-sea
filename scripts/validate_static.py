@@ -30,6 +30,7 @@ class Parser(HTMLParser):
     def __init__(self) -> None:
         super().__init__()
         self.hrefs: list[str] = []
+        self.assets: list[str] = []
         self.ids: list[str] = []
         self.forms: list[dict[str, str | None]] = []
 
@@ -39,6 +40,10 @@ class Parser(HTMLParser):
             self.ids.append(data["id"])
         if tag == "a" and data.get("href"):
             self.hrefs.append(data["href"])
+        if tag == "link" and data.get("href"):
+            self.assets.append(data["href"])
+        if tag in {"script", "img"} and data.get("src"):
+            self.assets.append(data["src"])
         if tag == "form":
             self.forms.append({"action": data.get("action"), "demo": data.get("data-demo-form")})
 
@@ -82,6 +87,11 @@ def main() -> int:
             target = route_to_file(href)
             if target is not None and not target.exists():
                 errors.append(f"{page.relative_to(ROOT)} broken internal link: {href}")
+
+        for asset in parser.assets:
+            target = route_to_file(asset)
+            if target is not None and not target.exists():
+                errors.append(f"{page.relative_to(ROOT)} missing internal asset: {asset}")
 
         for pattern, label in BANNED_PATTERNS:
             if pattern.search(text):
