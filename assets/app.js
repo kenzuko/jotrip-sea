@@ -14,6 +14,10 @@ document.querySelectorAll('input[type="date"]').forEach(input => {
   if (!input.min) input.min = localToday;
 });
 
+document.querySelectorAll('[data-form-note]').forEach(note => {
+  note.textContent = 'Bước tiếp theo tạo request để JoTrip kiểm tra điều kiện, vận hành và availability thực tế.';
+});
+
 function sitePrefix() {
   const script = [...document.scripts].find(item => /\/assets\/app\.js(?:\?|$)/.test(item.src));
   if (!script) return '';
