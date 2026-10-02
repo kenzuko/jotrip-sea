@@ -8,159 +8,101 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=Newsreader:ital,opsz,wght@1,6..72,500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/assets/home-reset.css">
+  <link rel="stylesheet" href="/assets/home-final.css">
 </head>
-<body id="top" class="home-reset">
-<header class="sea-header" data-header>
-  <a class="sea-brand" href="/" aria-label="JoTrip Sea home">
-    <img src="https://drive.google.com/thumbnail?id=1aE5Ywq2taDkSDppjFFXPFNqDOqF47ond&sz=w500" alt="JoTrip">
-  </a>
-  <nav class="sea-nav" data-nav>
-    <a href="#experiences">Trải nghiệm</a>
-    <a href="#journal">Ghi chép từ đảo</a>
-    <a href="#guides">Cẩm nang</a>
-  </nav>
-  <a class="sea-book" href="#experiences">Chọn chuyến</a>
-  <button class="nav-toggle sea-toggle" data-nav-toggle aria-label="Mở menu">☰</button>
+<body id="top" class="home-final">
+<header class="top-bar">
+  <a class="top-brand" href="/" aria-label="JoTrip Sea home"><img src="https://drive.google.com/thumbnail?id=1aE5Ywq2taDkSDppjFFXPFNqDOqF47ond&sz=w500" alt="JoTrip"></a>
+  <a class="top-action" href="#choose">Chọn chuyến</a>
 </header>
 
 <main>
-  <section class="opening" aria-labelledby="opening-title">
-    <div class="opening-copy">
-      <p class="micro">PHÚ QUỐC / SEA EXPERIENCES / JOTRIP</p>
-      <h1 id="opening-title">Biển Phú Quốc.<br><span>Đi cùng người ở đây.</span></h1>
-      <p class="opening-line">Snorkeling · Fishing · Cano riêng · Đi đảo · Sunset.</p>
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="hero-copy">
+      <span class="micro">PHÚ QUỐC / SEA BY JOTRIP</span>
+      <h1 id="hero-title">Biển<br>Phú Quốc.</h1>
+      <p>Đi cùng người ở đây.</p>
     </div>
 
-    <figure class="opening-main">
+    <figure class="hero-main">
       <img src="https://drive.google.com/thumbnail?id=1ZKk6C4v-ynKGGit7P1Kzie_Q85nujG-c&sz=w2400" alt="Hòn Mây Rút và vùng biển phía Nam Phú Quốc">
-      <figcaption><b>Nam đảo</b><span>Mây Rút · An Thới</span></figcaption>
+      <figcaption>Nam đảo · An Thới</figcaption>
     </figure>
 
-    <a class="opening-water" href="/experiences/snorkeling/" aria-label="Xem trải nghiệm snorkeling">
-      <img src="https://drive.google.com/thumbnail?id=1QmfrsAiwXht9RkAfwQc4vgfkHS9gjFbI&sz=w1800" alt="Snorkeling trong vùng biển Phú Quốc">
-      <span>Xuống nước ↗</span>
+    <a class="hero-inset" href="/experiences/snorkeling/" aria-label="Xem snorkeling">
+      <img src="https://drive.google.com/thumbnail?id=1QmfrsAiwXht9RkAfwQc4vgfkHS9gjFbI&sz=w1800" alt="Snorkeling tại Phú Quốc">
+      <b>Xuống nước ↗</b>
     </a>
 
-    <p class="opening-signature">Người bản địa đưa bạn đi xa hơn điểm đến.</p>
+    <p class="hero-signature">Người bản địa đưa bạn đi xa hơn điểm đến.</p>
   </section>
 
-  <nav class="experience-rail" aria-label="Các trải nghiệm biển">
-    <a href="/experiences/snorkeling/">Snorkeling</a>
-    <a href="/experiences/private-cano/">Cano riêng</a>
-    <a href="/experiences/fishing/">Fishing</a>
-    <a href="/experiences/scuba-diving/">Scuba</a>
-    <a href="/experiences/island-trips/">Đi đảo</a>
-    <a href="/experiences/yacht-charter/">Yacht</a>
-    <a href="/experiences/sunset/">Sunset</a>
-    <a href="/experiences/squid-fishing/">Câu mực</a>
+  <nav class="experience-rail" aria-label="Trải nghiệm biển">
+    <a href="#water">Snorkeling</a>
+    <a href="#fishing">Fishing</a>
+    <a href="#sunset">Sunset</a>
+    <a href="/experiences/private-cano/">Private boat</a>
   </nav>
 
-  <section class="visual-atlas" id="experiences" aria-label="Một ngày trên biển Phú Quốc">
-    <div class="atlas-heading">
-      <p class="micro dark">KHÔNG PHẢI MỘT TOUR DUY NHẤT</p>
-      <h2>Mỗi người muốn một ngày khác nhau.</h2>
+  <section id="water" class="water chapter">
+    <div class="water-copy">
+      <span class="micro dark">01 / WATER</span>
+      <h2>Nước trong<br>quan trọng hơn<br>trời xanh.</h2>
+      <a href="/experiences/snorkeling/">Snorkeling ↗</a>
     </div>
-
-    <a class="atlas-item atlas-snorkel" href="/experiences/snorkeling/">
-      <img src="https://drive.google.com/thumbnail?id=1QmfrsAiwXht9RkAfwQc4vgfkHS9gjFbI&sz=w2000" alt="Khách snorkeling ở Phú Quốc">
-      <div><small>01 / WATER</small><strong>Snorkeling</strong><span>Nước trong quan trọng hơn trời xanh.</span></div>
-    </a>
-
-    <a class="atlas-item atlas-fishing" href="/experiences/fishing/">
-      <img src="https://drive.google.com/thumbnail?id=14Knedt7oQ5XsMr06L1-9X7MgEK0_0dEb&sz=w1800" alt="Khách với cá vừa câu trên biển">
-      <div><small>02 / OFFSHORE</small><strong>Fishing</strong><span>05:00 · An Thới</span></div>
-    </a>
-
-    <a class="atlas-item atlas-island" href="/experiences/island-trips/">
-      <img src="https://drive.google.com/thumbnail?id=1ZKk6C4v-ynKGGit7P1Kzie_Q85nujG-c&sz=w2000" alt="Đảo nhỏ phía Nam Phú Quốc nhìn từ trên cao">
-      <div><small>03 / ISLAND</small><strong>Đi đảo</strong><span>Ở lâu hơn tại nơi đáng ở.</span></div>
-    </a>
-
-    <a class="atlas-item atlas-sunset" href="/experiences/sunset/">
-      <img src="https://drive.google.com/thumbnail?id=17WkEhMk5jKFV6PVSz0kxL7enpHafqPgb&sz=w1800" alt="Hai người ngồi bên bờ biển lúc hoàng hôn Phú Quốc">
-      <div><small>04 / WEST COAST</small><strong>Sunset</strong><span>Một buổi chiều không cần chạy điểm.</span></div>
-    </a>
+    <figure class="water-photo"><img src="https://drive.google.com/thumbnail?id=1QmfrsAiwXht9RkAfwQc4vgfkHS9gjFbI&sz=w2200" alt="Snorkeling trong vùng biển Phú Quốc"></figure>
+    <div class="water-word" aria-hidden="true">SWIM</div>
   </section>
 
-  <section class="local-ledger" id="journal">
-    <div class="ledger-title">
-      <p class="micro">GHI TỪ NGƯỜI Ở ĐÂY</p>
-      <h2>Đi nhiều hơn chưa chắc là một ngày tốt hơn.</h2>
-    </div>
-    <div class="ledger-notes">
-      <article><b>01</b><p>Trẻ nhỏ? Hai điểm tốt thường vui hơn bốn điểm vội.</p></article>
-      <article><b>02</b><p>Trời xanh chưa chắc nước trong.</p></article>
-      <article><b>03</b><p>Gió chiều lên, tụi mình sẽ nói bạn đi sáng.</p></article>
+  <section id="fishing" class="fishing chapter">
+    <div class="fishing-time">05:00</div>
+    <figure><img src="https://drive.google.com/thumbnail?id=14Knedt7oQ5XsMr06L1-9X7MgEK0_0dEb&sz=w1800" alt="Khách trong chuyến câu cá trên biển"></figure>
+    <div class="fishing-copy">
+      <span class="micro dark">02 / OFFSHORE</span>
+      <h2>Rời bờ<br>khi đảo<br>còn ngái ngủ.</h2>
+      <p>Có ngày cá ăn tốt. Có ngày chậm.</p>
+      <a href="/experiences/fishing/">Đi câu cá ↗</a>
     </div>
   </section>
 
-  <section class="shore-pause" aria-label="Bãi Khem, Phú Quốc">
-    <img src="https://drive.google.com/thumbnail?id=1QZAZKW00GCmHqsX7EXtc-XxYizxca4_f&sz=w2200" alt="Một buổi trưa ở Bãi Khem, Phú Quốc">
-    <div class="shore-pause-copy">
-      <p class="micro">BÃI KHEM / 11:40</p>
-      <h2>Có những ngày chỉ cần ở lại bờ lâu hơn.</h2>
+  <section class="local-notes">
+    <div class="local-title">
+      <span class="micro">GHI TỪ NGƯỜI Ở ĐÂY</span>
+      <h2>Không phải ngày nào cũng nên cố đi.</h2>
     </div>
+    <ol>
+      <li><b>01</b><span>Trẻ nhỏ - hai điểm tốt thường hơn bốn điểm vội.</span></li>
+      <li><b>02</b><span>Trời xanh chưa chắc nước trong.</span></li>
+      <li><b>03</b><span>Gió chiều tăng - tụi mình sẽ nói bạn đi sáng.</span></li>
+    </ol>
   </section>
 
-  <section class="service-index" aria-labelledby="service-title">
-    <div class="service-intro">
-      <p class="micro dark">CHỌN THEO CÁCH BẠN MUỐN Ở TRÊN BIỂN</p>
-      <h2 id="service-title">Bạn muốn ngày đó<br>thế nào?</h2>
+  <section id="sunset" class="sunset chapter">
+    <figure class="sun-main"><img src="https://drive.google.com/thumbnail?id=1ZCvRSjGhn2NanEjVTYDixmgjQC_YHZZ9&sz=w2400" alt="Hoàng hôn và tàu thuyền ngoài khơi Phú Quốc"></figure>
+    <div class="sun-copy">
+      <span class="micro dark">03 / WEST COAST</span>
+      <h2>Rồi có lúc<br>không cần<br>đi đâu nữa.</h2>
+      <a href="/experiences/sunset/">Sunset ↗</a>
     </div>
-    <div class="service-links">
-      <a href="/experiences/snorkeling/"><span>Muốn xuống nước</span><b>Snorkeling</b><i>↗</i></a>
-      <a href="/experiences/private-cano/"><span>Muốn một ngày riêng</span><b>Cano riêng</b><i>↗</i></a>
-      <a href="/experiences/fishing/"><span>Muốn đi xa hơn</span><b>Fishing</b><i>↗</i></a>
-      <a href="/experiences/scuba-diving/"><span>Muốn xuống sâu</span><b>Scuba diving</b><i>↗</i></a>
-      <a href="/experiences/yacht-charter/"><span>Muốn chậm và thoải mái</span><b>Yacht charter</b><i>↗</i></a>
-      <a href="/experiences/squid-fishing/"><span>Muốn ở lại khi trời tối</span><b>Câu mực đêm</b><i>↗</i></a>
-    </div>
+    <figure class="sun-small"><img src="https://drive.google.com/thumbnail?id=17WkEhMk5jKFV6PVSz0kxL7enpHafqPgb&sz=w1600" alt="Hai người ngồi bên biển Phú Quốc lúc hoàng hôn"></figure>
   </section>
 
-  <section class="sunset-spread">
-    <figure class="sunset-main">
-      <img src="https://drive.google.com/thumbnail?id=1ZCvRSjGhn2NanEjVTYDixmgjQC_YHZZ9&sz=w2200" alt="Hoàng hôn và tàu thuyền ngoài khơi Phú Quốc">
-    </figure>
-    <div class="sunset-copy">
-      <p class="micro dark">PHÚ QUỐC / CUỐI NGÀY</p>
-      <p class="sunset-quote">“Có những ngày không cần thêm một điểm đến nào nữa.”</p>
-      <a href="/experiences/sunset/">Xem những buổi chiều trên biển ↗</a>
+  <section id="choose" class="choose">
+    <span class="micro dark">MUỐN RA BIỂN?</span>
+    <h2>Chọn cảm giác trước.</h2>
+    <div class="choose-list">
+      <a href="/experiences/snorkeling/"><b>Xuống nước</b><i>Snorkeling ↗</i></a>
+      <a href="/experiences/private-cano/"><b>Một ngày riêng</b><i>Cano riêng ↗</i></a>
+      <a href="/experiences/fishing/"><b>Đi xa hơn</b><i>Fishing ↗</i></a>
+      <a href="/experiences/scuba-diving/"><b>Xuống sâu</b><i>Scuba ↗</i></a>
+      <a href="/experiences/yacht-charter/"><b>Chậm và thoải mái</b><i>Yacht ↗</i></a>
+      <a href="/experiences/squid-fishing/"><b>Ở lại khi trời tối</b><i>Câu mực ↗</i></a>
     </div>
-    <figure class="sunset-small">
-      <img src="https://drive.google.com/thumbnail?id=17WkEhMk5jKFV6PVSz0kxL7enpHafqPgb&sz=w1400" alt="Khoảnh khắc bên biển Phú Quốc lúc hoàng hôn">
-    </figure>
-  </section>
-
-  <section class="decision-layer">
-    <div>
-      <p class="micro">TRƯỚC KHI RA BIỂN</p>
-      <h2>Biển quyết định một phần chuyến đi.</h2>
-    </div>
-    <div class="decision-copy">
-      <p>Trước giờ đi, tụi mình kiểm tra gió, sóng, vùng biển và trạng thái vận hành. Không hợp thì đổi giờ hoặc đổi kế hoạch.</p>
-      <a href="#experiences">Chọn trải nghiệm trước →</a>
-    </div>
-  </section>
-
-  <section class="guides" id="guides">
-    <header><p class="micro dark">ĐỌC KHI CẦN</p><h2>Ghi chép từ biển.</h2></header>
-    <div class="guide-list">
-      <a href="/experiences/snorkeling/"><span>Snorkeling</span><b>Trời nắng có đồng nghĩa nước trong?</b><i>↗</i></a>
-      <a href="/experiences/private-cano/"><span>Private canoe</span><b>Ba đảo hay một ngày đi chậm?</b><i>↗</i></a>
-      <a href="/experiences/fishing/"><span>Fishing</span><b>Sáng và chiều khác nhau ra sao?</b><i>↗</i></a>
-    </div>
-  </section>
-
-  <section class="closing-mark">
-    <p class="micro">JOTRIP / PHÚ QUỐC</p>
-    <h2>Ra biển theo cách của bạn.</h2>
-    <p>Phần còn lại để người ở đây lo cùng bạn.</p>
-    <a href="#experiences">Chọn chuyến biển ↗</a>
+    <p class="conditions-note">Ngày đi, khu vực khách sạn và điều kiện biển sẽ được kiểm tra ở bước chọn chuyến. Trang preview không hiển thị số liệu giả.</p>
   </section>
 </main>
 
-<footer class="sea-footer">
+<footer class="home-footer">
   <img src="https://drive.google.com/thumbnail?id=1aE5Ywq2taDkSDppjFFXPFNqDOqF47ond&sz=w500" alt="JoTrip">
   <p>Người bản địa đưa bạn đi xa hơn điểm đến.</p>
   <a href="#top">Lên đầu ↑</a>
