@@ -1,18 +1,22 @@
-const serviceStyles = document.createElement('link');
-serviceStyles.rel = 'stylesheet';
-serviceStyles.href = '/assets/service-pages.css';
-document.head.appendChild(serviceStyles);
+const isResetHome = document.body.classList.contains('home-reset');
 
-const visualStyles = document.createElement('link');
-visualStyles.rel = 'stylesheet';
-visualStyles.href = '/assets/visual-v2.css';
-document.head.appendChild(visualStyles);
+if (!isResetHome) {
+  const serviceStyles = document.createElement('link');
+  serviceStyles.rel = 'stylesheet';
+  serviceStyles.href = '/assets/service-pages.css';
+  document.head.appendChild(serviceStyles);
 
-if (document.body.classList.contains('home-v3')) {
-  const homeV3Styles = document.createElement('link');
-  homeV3Styles.rel = 'stylesheet';
-  homeV3Styles.href = '/assets/home-v3.css';
-  document.head.appendChild(homeV3Styles);
+  const visualStyles = document.createElement('link');
+  visualStyles.rel = 'stylesheet';
+  visualStyles.href = '/assets/visual-v2.css';
+  document.head.appendChild(visualStyles);
+
+  if (document.body.classList.contains('home-v3')) {
+    const homeV3Styles = document.createElement('link');
+    homeV3Styles.rel = 'stylesheet';
+    homeV3Styles.href = '/assets/home-v3.css';
+    document.head.appendChild(homeV3Styles);
+  }
 }
 
 const toggle = document.querySelector('[data-nav-toggle]');
