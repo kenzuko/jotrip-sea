@@ -7,13 +7,12 @@
   async function request(path, options = {}) {
     const controller = new AbortController();
     const timeout = window.setTimeout(() => controller.abort(), REQUEST_TIMEOUT_MS);
+    const headers = { ...(options.headers || {}) };
+    if (options.body !== undefined && options.body !== null) headers['Content-Type'] = 'application/json';
     try {
       const response = await fetch(`${API_BASE}${path}`, {
         ...options,
-        headers: {
-          'Content-Type': 'application/json',
-          ...(options.headers || {})
-        },
+        headers,
         signal: controller.signal
       });
       let payload = null;
