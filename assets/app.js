@@ -1,45 +1,49 @@
-const isStandaloneHome = document.body.classList.contains('home-final') || document.body.classList.contains('home-reset') || document.body.classList.contains('home-shop');
-
-if (!isStandaloneHome) {
-  const serviceStyles = document.createElement('link');
-  serviceStyles.rel = 'stylesheet';
-  serviceStyles.href = '/assets/service-pages.css';
-  document.head.appendChild(serviceStyles);
-
-  const visualStyles = document.createElement('link');
-  visualStyles.rel = 'stylesheet';
-  visualStyles.href = '/assets/visual-v2.css';
-  document.head.appendChild(visualStyles);
-
-  if (document.body.classList.contains('home-v3')) {
-    const homeV3Styles = document.createElement('link');
-    homeV3Styles.rel = 'stylesheet';
-    homeV3Styles.href = '/assets/home-v3.css';
-    document.head.appendChild(homeV3Styles);
-  }
-}
-
 const toggle = document.querySelector('[data-nav-toggle]');
 const nav = document.querySelector('[data-nav]');
-if (toggle && nav) toggle.addEventListener('click', () => nav.classList.toggle('open'));
+if (toggle && nav) {
+  toggle.setAttribute('aria-expanded', 'false');
+  toggle.addEventListener('click', () => {
+    const open = nav.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', String(open));
+  });
+}
+
+const today = new Date();
+const localToday = new Date(today.getTime() - today.getTimezoneOffset() * 60000).toISOString().slice(0, 10);
+document.querySelectorAll('input[type="date"]').forEach(input => {
+  if (!input.min) input.min = localToday;
+});
 
 document.querySelectorAll('[data-demo-form]').forEach(form => {
   form.addEventListener('submit', event => {
     event.preventDefault();
     const note = form.querySelector('[data-form-note]');
-    if (note) note.textContent = 'Preview UI only - chưa gửi request vào Fishing Desk.';
+    if (note) note.textContent = 'Đã ghi nhận lựa chọn trên giao diện preview. Chưa gửi request thật.';
   });
 });
 
+const builder = document.querySelector('.builder-options');
+if (builder) {
+  const result = document.querySelector('.builder-result strong');
+  const copy = {
+    'Snorkeling': 'Ưu tiên 1-2 điểm xuống nước tốt thay vì chạy nhiều đảo.',
+    'Bơi & tắm biển': 'Giữ nhiều thời gian ở bãi phù hợp, giảm thời gian lên xuống cano.',
+    'Ít đông': 'Đi sớm hơn hoặc đổi thứ tự điểm để tránh khung đông nhất khi có thể.',
+    'Ăn trưa trên đảo': 'Xếp route quanh chỗ dừng ăn thay vì chen bữa trưa vào cuối lịch.',
+    'Đi cùng trẻ nhỏ': '2-3 điểm phù hợp thay vì cố chạy đủ 4 đảo.',
+    'Hoàng hôn': 'Xuất phát muộn hơn và giữ phần cuối ngày cho vùng nhìn hoàng hôn phù hợp.'
+  };
+  builder.querySelectorAll('.choice').forEach(button => {
+    button.addEventListener('click', () => {
+      builder.querySelectorAll('.choice').forEach(item => item.classList.remove('active'));
+      button.classList.add('active');
+      if (result && copy[button.textContent.trim()]) result.textContent = copy[button.textContent.trim()];
+    });
+  });
+}
+
 const tripFinder = document.querySelector('[data-trip-finder]');
 if (tripFinder) {
-  const dateInput = tripFinder.querySelector('input[type="date"]');
-  if (dateInput) {
-    const today = new Date();
-    const local = new Date(today.getTime() - today.getTimezoneOffset() * 60000).toISOString().slice(0, 10);
-    dateInput.min = local;
-  }
-
   tripFinder.addEventListener('submit', event => {
     event.preventDefault();
     const data = new FormData(tripFinder);
