@@ -48,7 +48,7 @@
           <input type="date" name="date" required>
         </label>
         <label>Số khách
-          <input type="number" name="pax" min="1" max="99" inputmode="numeric" required>
+          <input type="number" name="pax" min="1" max="40" inputmode="numeric" required>
         </label>
       </div>
 
@@ -65,32 +65,33 @@
 
       <div class="form-head compact">
         <span class="step">02</span>
-        <div><strong>Để JoTrip biết đang trả lời ai</strong><p>WhatsApp là kênh gửi cuối. Không thanh toán ở bước này.</p></div>
+        <div><strong>Để JoTrip biết đang trả lời ai</strong><p>Request được lưu trước. WhatsApp là bước trao đổi tiếp theo, không phải nơi giữ dữ liệu gốc.</p></div>
       </div>
 
       <label>Tên khách
-        <input type="text" name="customer_name" autocomplete="name" required placeholder="Tên để JoTrip xưng hô">
+        <input type="text" name="customer_name" autocomplete="name" maxlength="100" required placeholder="Tên để JoTrip xưng hô">
       </label>
 
       <label>Số điện thoại / WhatsApp
-        <input type="tel" name="contact" autocomplete="tel" placeholder="Không bắt buộc nếu bạn gửi từ WhatsApp của mình">
+        <input type="tel" name="contact" autocomplete="tel" maxlength="120" placeholder="Không bắt buộc nếu bạn liên hệ sau từ WhatsApp của mình">
       </label>
 
       <label>Ghi chú thêm
-        <textarea name="notes" rows="4" placeholder="Trẻ nhỏ, người lớn tuổi, dịp đặc biệt, điều bạn ưu tiên..."></textarea>
+        <textarea name="notes" rows="4" maxlength="1500" placeholder="Trẻ nhỏ, người lớn tuổi, dịp đặc biệt, điều bạn ưu tiên..."></textarea>
       </label>
 
       <div class="request-actions">
-        <button class="send-button" type="submit">Gửi request qua WhatsApp</button>
-        <button class="copy-button" type="button" data-copy-request>Copy nội dung request</button>
+        <button class="send-button" type="submit" data-submit-request>Tạo request & tiếp tục</button>
+        <button class="copy-button" type="button" data-copy-request>Copy nội dung</button>
       </div>
-      <p class="send-note" data-send-note>JoTrip chỉ xác nhận chuyến sau khi ops kiểm tra lại.</p>
+      <a class="fallback-button" data-fallback-whatsapp href="#" hidden>API chưa nhận được - gửi thủ công qua WhatsApp</a>
+      <p class="send-note" data-send-note role="status" aria-live="polite">JoTrip chỉ xác nhận chuyến sau khi ops kiểm tra lại.</p>
     </form>
 
     <aside class="request-summary">
       <div class="summary-sticky">
         <p class="eyebrow dark">REQUEST SUMMARY</p>
-        <div class="request-code"><span>Mã request</span><strong data-request-code>JTSEA-...</strong></div>
+        <div class="request-code"><span>Mã request</span><strong data-request-code>JoTrip cấp khi gửi</strong></div>
         <h2 data-summary-title>Trải nghiệm biển Phú Quốc</h2>
         <dl data-summary-list></dl>
 
@@ -109,6 +110,7 @@
 <footer class="request-footer">
   <p>JoTrip Sea · Người bản địa đưa bạn đi xa hơn điểm đến.</p>
 </footer>
+<script src="/assets/sea-api.js" defer></script>
 <script src="/assets/booking.js" defer></script>
 </body>
 </html>
