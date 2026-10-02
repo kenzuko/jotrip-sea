@@ -1,0 +1,13 @@
+{
+  "mode": "development-source",
+  "note": "Drive is the source registry only. Production should cache/transform these assets to a web CDN before launch.",
+  "assets": [
+    {"key":"logo","drive_id":"1aE5Ywq2taDkSDppjFFXPFNqDOqF47ond","verified_public":true},
+    {"key":"hero-sea","drive_id":"1ZKk6C4v-ynKGGit7P1Kzie_Q85nujG-c","verified_public":true},
+    {"key":"private-cano","drive_id":"1ArXduel7S_nmYoXyUDKiwo4bH70lI5bO","verified_public":true},
+    {"key":"snorkeling","drive_id":"1QmfrsAiwXht9RkAfwQc4vgfkHS9gjFbI","verified_public":false},
+    {"key":"fishing-guest","drive_id":"14Knedt7oQ5XsMr06L1-9X7MgEK0_0dEb","verified_public":false},
+    {"key":"yacht-iris","drive_id":"1vW-Rwjl3lcMqUF9j-sAgr2ECKsplwE0M","verified_public":false},
+    {"key":"squid-fishing","drive_id":"1gKXavk7A4NSECqkOgVk-LQu_rIA8s4gO","verified_public":false}
+  ]
+}

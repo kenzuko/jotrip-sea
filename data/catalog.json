@@ -1,0 +1,14 @@
+{
+  "status": "preview",
+  "note": "Fields marked provisional must be verified before production.",
+  "experiences": [
+    {"id":"snorkeling","name":"Snorkeling","status":"draft"},
+    {"id":"scuba-diving","name":"Scuba Diving","status":"planned"},
+    {"id":"island-trips","name":"Island Trips","status":"planned"},
+    {"id":"private-cano","name":"Private Cano","status":"draft"},
+    {"id":"fishing","name":"Fishing","status":"draft","source":"phuquocfishingtours.com + JoTrip ops knowledge"},
+    {"id":"yacht","name":"Yacht Charter","status":"planned"},
+    {"id":"sunset","name":"Sunset","status":"planned"},
+    {"id":"squid-fishing","name":"Squid Fishing","status":"planned"}
+  ]
+}
