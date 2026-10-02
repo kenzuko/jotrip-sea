@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="description" content="Theo dõi trạng thái request JoTrip Sea: điều kiện biển, vận hành và availability thực tế.">
+  <title>Theo dõi request - JoTrip Sea</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=Newsreader:ital,opsz,wght@1,6..72,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/request.css">
+</head>
+<body>
+<header class="track-header">
+  <a class="brand" href="/" aria-label="JoTrip Sea home"><img src="https://drive.google.com/thumbnail?id=1aE5Ywq2taDkSDppjFFXPFNqDOqF47ond&sz=w500" alt="JoTrip"></a>
+  <a class="back-link" href="/#experiences">Khám phá trải nghiệm khác</a>
+</header>
+
+<main class="track-shell">
+  <section class="track-hero">
+    <p class="eyebrow">REQUEST TRACKING</p>
+    <h1>Tình trạng chuyến đi,<br><em>không phải lời hứa tự động.</em></h1>
+    <p>JoTrip cập nhật riêng điều kiện biển, việc vận hành và availability. Chỉ khi trạng thái tổng là <strong>Đã xác nhận</strong> thì request mới trở thành xác nhận chuyến.</p>
+  </section>
+
+  <section class="new-banner" data-new-banner hidden>
+    <strong>Request đã được lưu.</strong>
+    <span>Bạn có thể giữ link này để xem JoTrip cập nhật sau khi ops kiểm tra.</span>
+  </section>
+
+  <section class="tracking-card" data-tracking-card aria-live="polite">
+    <div class="loading-state" data-loading>Đang đọc request từ JoTrip Sea...</div>
+
+    <div data-track-content hidden>
+      <div class="track-topline">
+        <div><span>Mã request</span><strong data-request-code>JTSEA-...</strong></div>
+        <div class="overall-status" data-overall-status>Đang kiểm tra</div>
+      </div>
+
+      <div class="trip-grid">
+        <div><span>Trải nghiệm</span><strong data-service></strong></div>
+        <div><span>Ngày đi</span><strong data-trip-date></strong></div>
+        <div><span>Số khách</span><strong data-pax></strong></div>
+        <div><span>Khu vực ở</span><strong data-hotel-area></strong></div>
+      </div>
+
+      <div class="option-list" data-options hidden></div>
+
+      <div class="checks-grid">
+        <article>
+          <span class="check-no">01</span>
+          <div><small>SEA SUITABILITY</small><strong data-sea-status>Đang kiểm tra</strong><p>Biển có phù hợp với trải nghiệm này hay không.</p></div>
+        </article>
+        <article>
+          <span class="check-no">02</span>
+          <div><small>OPERATION</small><strong data-operation-status>Đang kiểm tra</strong><p>Dịch vụ/boat/operator có vận hành ngày đó hay không.</p></div>
+        </article>
+        <article>
+          <span class="check-no">03</span>
+          <div><small>AVAILABILITY</small><strong data-availability-status>Đang kiểm tra</strong><p>Chỗ thực tế còn hay không sau khi ops kiểm tra.</p></div>
+        </article>
+      </div>
+
+      <div class="public-note" data-public-note hidden></div>
+
+      <section class="timeline-section">
+        <div class="section-head"><h2>Lịch sử cập nhật</h2><button type="button" data-refresh>Kiểm tra lại</button></div>
+        <ol class="timeline" data-timeline></ol>
+        <p class="updated-at" data-updated-at></p>
+      </section>
+
+      <div class="track-actions">
+        <a class="whatsapp-button" data-whatsapp href="#">Tiếp tục qua WhatsApp</a>
+        <button type="button" class="copy-link" data-copy-link>Copy link theo dõi</button>
+      </div>
+      <p class="track-note" data-track-note>Link này chỉ chứa token theo dõi ngẫu nhiên. Thông tin liên hệ và ghi chú riêng của khách không hiển thị ở đây.</p>
+    </div>
+
+    <div class="error-state" data-error hidden>
+      <strong>Không đọc được request này.</strong>
+      <p>Link có thể thiếu token, sai token hoặc hệ thống tạm thời chưa phản hồi.</p>
+      <button type="button" data-error-retry>Thử lại</button>
+      <a href="https://wa.me/84817060066">Liên hệ JoTrip qua WhatsApp</a>
+    </div>
+  </section>
+</main>
+
+<footer class="track-footer"><p>JoTrip Sea · Người bản địa đưa bạn đi xa hơn điểm đến.</p></footer>
+<script src="/assets/sea-api.js" defer></script>
+<script src="/assets/request.js" defer></script>
+</body>
+</html>

@@ -26,7 +26,7 @@ jobs:
         run: |
           mkdir -p _site
           cp index.html _site/index.html
-          cp -R assets experiences data booking _site/
+          cp -R assets experiences data booking request _site/
           touch _site/.nojekyll
           find _site -name '*.html' -type f -print0 | xargs -0 sed -i 's|="/|="/jotrip-sea/|g'
           sed -i "s|'/assets/|'\/jotrip-sea\/assets\/|g" _site/assets/app.js

@@ -25,4 +25,7 @@ jobs:
       - name: Check JavaScript syntax
         run: |
           node --check assets/app.js
+          node --check assets/sea-api.js
           node --check assets/booking.js
+          node --check assets/request.js
+          node --check backend/function/index.mjs
