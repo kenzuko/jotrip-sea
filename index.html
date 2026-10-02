@@ -3,217 +3,221 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-  <meta name="description" content="Chọn và kiểm tra các trải nghiệm biển Phú Quốc cùng JoTrip - snorkeling, câu cá, cano riêng, đi đảo, du thuyền, sunset và câu mực.">
+  <meta name="description" content="Chọn và kiểm tra các trải nghiệm biển Phú Quốc cùng JoTrip - snorkeling, câu cá, cano riêng, đi đảo, scuba, yacht, sunset và câu mực.">
   <title>JoTrip Sea - Chọn trải nghiệm biển Phú Quốc</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=Newsreader:ital,opsz,wght@1,6..72,500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/assets/home-shop.css">
+  <link rel="stylesheet" href="/assets/home-lock.css">
 </head>
-<body id="top" class="home-shop">
-<header class="shop-header">
-  <a class="shop-brand" href="/" aria-label="JoTrip Sea home">
-    <img src="https://drive.google.com/thumbnail?id=1aE5Ywq2taDkSDppjFFXPFNqDOqF47ond&sz=w500" alt="JoTrip">
-  </a>
-  <nav class="shop-nav" aria-label="Điều hướng chính">
+<body id="top" class="home-lock">
+<header class="sea-header" data-header>
+  <a class="brand" href="/" aria-label="JoTrip Sea home"><img src="https://drive.google.com/thumbnail?id=1aE5Ywq2taDkSDppjFFXPFNqDOqF47ond&amp;sz=w500" alt="JoTrip" decoding="async"></a>
+  <nav class="desktop-nav" aria-label="Điều hướng chính">
     <a href="#experiences">Trải nghiệm</a>
-    <a href="#how">Cách chọn</a>
-    <a href="#local">Người bản địa</a>
+    <a href="#choose">Chọn theo nhu cầu</a>
+    <a href="#how">Cách xác nhận</a>
   </nav>
-  <a class="shop-cta" href="#finder">Kiểm tra chuyến</a>
+  <a class="header-cta" href="#availability">Check Availability</a>
 </header>
 
 <main>
-  <section class="hero-shop">
-    <div class="hero-visual">
-      <img src="https://drive.google.com/thumbnail?id=1ZKk6C4v-ynKGGit7P1Kzie_Q85nujG-c&sz=w2400" alt="Vùng biển phía Nam Phú Quốc">
-      <div class="hero-shade"></div>
-      <div class="hero-copy">
-        <span>SEA EXPERIENCES / PHÚ QUỐC</span>
-        <h1>Chọn một ngày<br>trên biển.</h1>
-        <p>Không cần đọc hết về Phú Quốc trước. Chọn thứ bạn muốn làm, rồi tụi mình kiểm tra ngày đi, khu vực khách sạn và điều kiện biển.</p>
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="hero-media">
+      <img src="https://drive.google.com/thumbnail?id=1ZKk6C4v-ynKGGit7P1Kzie_Q85nujG-c&amp;sz=w2400" alt="Đảo và vùng biển phía Nam Phú Quốc" fetchpriority="high">
+      <div class="hero-overlay"></div>
+      <div class="hero-caption">Mây Rút · Nam Phú Quốc</div>
+    </div>
+    <div class="hero-copy">
+      <p class="eyebrow light">JOTRIP SEA · PHÚ QUỐC</p>
+      <h1 id="hero-title">Đi biển kiểu<br><em>bạn thật sự muốn.</em></h1>
+      <p class="hero-lead">Chọn trải nghiệm trước. Tụi mình kiểm ngày đi, khu vực khách sạn, boat/operator và điều kiện biển trước khi xác nhận.</p>
+      <div class="hero-actions">
+        <a class="btn primary" href="#experiences">Xem các chuyến</a>
+        <a class="btn text" href="#availability">Check Availability <span>↘</span></a>
       </div>
     </div>
+    <aside class="quick-decide" aria-label="Chọn nhanh trải nghiệm">
+      <span class="quick-kicker">BẠN ĐANG MUỐN...</span>
+      <a href="/experiences/snorkeling/"><b>Xuống nước</b><small>Snorkeling / reef</small><span>→</span></a>
+      <a href="/experiences/private-cano/"><b>Đi riêng</b><small>Flexible route</small><span>→</span></a>
+      <a href="/experiences/fishing/"><b>Câu cá</b><small>05:00 / 14:00</small><span>→</span></a>
+      <a href="#choose"><b>Chưa biết chọn gì</b><small>Chọn theo nhu cầu</small><span>↓</span></a>
+    </aside>
+  </section>
 
-    <form class="trip-finder" id="finder" data-trip-finder>
-      <span class="finder-kicker">BẮT ĐẦU TỪ ĐÂY</span>
-      <h2>Bạn muốn đi kiểu nào?</h2>
-      <p>Đây là bước chọn chuyến, chưa phải xác nhận chỗ. JoTrip sẽ kiểm tra vận hành và điều kiện thực tế trước khi xác nhận.</p>
-      <div class="finder-grid">
-        <div class="field full">
-          <label for="experience">Trải nghiệm</label>
-          <select id="experience" name="experience" required>
-            <option value="">Chọn trải nghiệm</option>
-            <option value="snorkeling">Snorkeling</option>
-            <option value="private-cano">Cano riêng</option>
-            <option value="fishing">Fishing</option>
-            <option value="scuba-diving">Scuba diving</option>
-            <option value="island-trips">Đi đảo</option>
-            <option value="yacht-charter">Yacht charter</option>
-            <option value="sunset">Sunset</option>
-            <option value="squid-fishing">Câu mực đêm</option>
-          </select>
-        </div>
-        <div class="field">
-          <label for="trip-date">Ngày đi</label>
-          <input id="trip-date" name="date" type="date" required>
-        </div>
-        <div class="field">
-          <label for="pax">Số khách</label>
-          <select id="pax" name="pax">
-            <option value="2">2 khách</option>
-            <option value="1">1 khách</option>
-            <option value="3">3 khách</option>
-            <option value="4">4 khách</option>
-            <option value="5">5 khách</option>
-            <option value="6">6 khách</option>
-            <option value="7">7 khách</option>
-            <option value="8">8+ khách</option>
-          </select>
-        </div>
-        <div class="field full">
-          <label for="area">Khu vực khách sạn</label>
-          <select id="area" name="area">
-            <option value="unknown">Chưa biết / nhập sau</option>
-            <option value="khem">Khem Beach</option>
-            <option value="an-thoi">An Thới</option>
-            <option value="bai-truong">Bãi Trường</option>
-            <option value="duong-dong">Dương Đông</option>
-            <option value="north">Bắc đảo</option>
-          </select>
-        </div>
+  <section class="intro-band" id="experiences">
+    <div>
+      <p class="eyebrow">SEA EXPERIENCES</p>
+      <h2>Nhìn là biết mình có thể đi gì.</h2>
+    </div>
+    <p>Không cần đọc cả một trang giới thiệu JoTrip trước. Mỗi chuyến dưới đây có đủ những fact cần thiết để bạn quyết định có muốn xem sâu hơn hay không.</p>
+  </section>
+
+  <section class="experience-flow">
+    <article class="experience exp-snorkel">
+      <a class="exp-image" href="/experiences/snorkeling/">
+        <img src="https://drive.google.com/thumbnail?id=1QmfrsAiwXht9RkAfwQc4vgfkHS9gjFbI&amp;sz=w1800" loading="lazy" decoding="async" alt="Khách snorkeling trên rạn san hô ở vùng biển Phú Quốc">
+        <span class="image-label">REEF / WATER</span>
+      </a>
+      <div class="exp-copy">
+        <span class="exp-number">01</span>
+        <p class="eyebrow">SNORKELING</p>
+        <h3>Ở dưới nước lâu hơn.<br>Chạy điểm ít hơn.</h3>
+        <div class="facts"><span>Shared / Private</span><span>Half / Full day</span><span>South sea</span></div>
+        <p>Cho người muốn phần chính của ngày nằm ở dưới nước. Visibility phải kiểm theo đúng vùng biển, không suy từ việc trời đang nắng.</p>
+        <a class="product-link" href="/experiences/snorkeling/">Xem Snorkeling <span>→</span></a>
       </div>
-      <button class="finder-button" type="submit">Xem lựa chọn phù hợp →</button>
-      <p class="finder-note">Không hiển thị “còn chỗ” nếu chưa kiểm tra thực tế.</p>
+      <div class="local-note note-a"><span>LOCAL NOTE</span><p>Trời xanh chưa chắc nước trong.</p></div>
+    </article>
+
+    <article class="experience exp-private">
+      <div class="exp-copy">
+        <span class="exp-number">02</span>
+        <p class="eyebrow">PRIVATE CANO</p>
+        <h3>Một chiếc cano.<br>Một ngày theo nhóm bạn.</h3>
+        <div class="facts"><span>Private</span><span>Flexible route</span><span>Family friendly</span></div>
+        <p>Route đi sau nhu cầu: bơi, snorkel, beach, ăn trưa hay đi chậm. Trẻ nhỏ không nhất thiết phải chạy đủ ba bốn đảo.</p>
+        <a class="product-link" href="/experiences/private-cano/">Thiết kế ngày đi <span>→</span></a>
+      </div>
+      <a class="exp-image" href="/experiences/private-cano/">
+        <img src="https://drive.google.com/thumbnail?id=1B3flDvlDIIb6_6B7t8fsngwA_uck-xGF&amp;sz=w1800" loading="lazy" decoding="async" alt="Nhóm khách trên cano ở Phú Quốc">
+        <span class="image-label">PRIVATE / FLEXIBLE</span>
+      </a>
+      <div class="local-note note-b"><span>LOCAL NOTE</span><p>Ở Khem Beach thì sáng đi An Thới khá tiện.</p></div>
+    </article>
+
+    <article class="experience exp-fishing">
+      <div class="fishing-time" aria-hidden="true"><strong>05:00</strong><i></i><strong>14:00</strong></div>
+      <a class="exp-image portrait" href="/experiences/fishing/">
+        <img src="https://drive.google.com/thumbnail?id=14Knedt7oQ5XsMr06L1-9X7MgEK0_0dEb&amp;sz=w1600" loading="lazy" decoding="async" alt="Khách cầm cá vừa câu được trên biển">
+      </a>
+      <div class="exp-copy dark-copy">
+        <span class="exp-number">03</span>
+        <p class="eyebrow">FISHING · AN THỚI</p>
+        <h3>Đi sớm.<br>Để biển quyết định phần còn lại.</h3>
+        <div class="facts"><span>05:00-14:00</span><span>14:00-21:00</span><span>Shared / Private</span></div>
+        <p>Bottom fishing hoặc jig tùy điều kiện. Tụi mình có thể chọn vùng và cách câu hợp lý hơn, nhưng không ai hứa trước con cá.</p>
+        <a class="product-link light-link" href="/experiences/fishing/">Xem Fishing <span>→</span></a>
+      </div>
+    </article>
+
+    <article class="experience exp-scuba">
+      <a class="exp-image wide" href="/experiences/scuba-diving/">
+        <img src="https://drive.google.com/thumbnail?id=1f3twuWnMWr-mbiSlHpT-sVdzWcPgKQec&amp;sz=w1800" loading="lazy" decoding="async" alt="Nhóm khách chuẩn bị xuống nước ở Phú Quốc">
+      </a>
+      <div class="exp-copy scuba-copy">
+        <span class="exp-number">04</span>
+        <p class="eyebrow">SCUBA DIVING</p>
+        <h3>Beginner và certified diver<br>không đi cùng một flow.</h3>
+        <div class="facts"><span>Instructor</span><span>Equipment</span><span>Safety first</span></div>
+        <p>JoTrip hỏi level trước, rồi mới đi đến operator, điểm lặn và số dives. Quyết định cuối cùng vẫn thuộc về divemaster/operator hôm đó.</p>
+        <a class="product-link" href="/experiences/scuba-diving/">Xem Scuba <span>→</span></a>
+      </div>
+    </article>
+  </section>
+
+  <span class="anchor-target" id="places" aria-hidden="true"></span>
+  <section class="more-sea">
+    <div class="more-title">
+      <p class="eyebrow">VẪN CÒN BIỂN THEO CÁCH KHÁC</p>
+      <h2>Không phải ngày nào cũng cần xuống nước.</h2>
+    </div>
+    <div class="more-layout">
+      <a class="more-item island" href="/experiences/island-trips/">
+        <img src="https://drive.google.com/thumbnail?id=1ZKk6C4v-ynKGGit7P1Kzie_Q85nujG-c&amp;sz=w2400" loading="lazy" decoding="async" alt="Một đảo nhỏ phía Nam Phú Quốc">
+        <div><span>Shared / Private · South islands</span><h3>Island Hopping</h3><p>Route, travel time và thời gian thật sự ở trên đảo.</p><b>Xem route →</b></div>
+      </a>
+      <a class="more-item yacht" href="/experiences/yacht-charter/">
+        <div class="yacht-frame"><img src="https://drive.google.com/thumbnail?id=1vW-Rwjl3lcMqUF9j-sAgr2ECKsplwE0M&amp;sz=w800" loading="lazy" decoding="async" alt="Motor yacht thực tế"></div>
+        <div><span>Private · Vessel first</span><h3>Yacht Charter</h3><p>Chọn tàu, sức chứa và cách dùng ngày trước khi chốt route.</p><b>Xem yacht →</b></div>
+      </a>
+      <a class="more-item sunset" href="/experiences/sunset/">
+        <img src="https://drive.google.com/thumbnail?id=1yu-aC2oZOLyrqcZ4nXQKe2IIRYWWBPpy&amp;sz=w1600" loading="lazy" decoding="async" alt="Hoàng hôn bên biển Phú Quốc">
+        <div><span>Afternoon · Slow pace</span><h3>Sunset</h3><p>Một buổi chiều ngắn hơn, ít kỹ thuật hơn.</p><b>Xem sunset →</b></div>
+      </a>
+      <a class="more-item squid" href="/experiences/squid-fishing/">
+        <div class="night-field"><span class="moon">◐</span><span>17:00<br>→ 21:00</span></div>
+        <div><span>Evening · Local sea life</span><h3>Câu mực đêm</h3><p>Trải nghiệm buổi tối. Catch không bao giờ là lời hứa bán tour.</p><b>Xem chuyến đêm →</b></div>
+      </a>
+    </div>
+    <p class="asset-note">Câu mực đang để visual trung tính cho tới khi có ảnh thật sạch, thay vì dùng poster quảng cáo cũ.</p>
+  </section>
+
+  <span class="anchor-target" id="conditions" aria-hidden="true"></span>
+  <section class="conditions" id="how">
+    <div class="conditions-head">
+      <p class="eyebrow light">BEFORE WE CONFIRM</p>
+      <h2>Biển đẹp không có nghĩa là chuyến chắc chắn chạy.</h2>
+      <p>JoTrip tách ba chuyện ra khỏi nhau: điều kiện biển, service có đang vận hành hay không, và availability thật của boat/operator.</p>
+    </div>
+    <div class="condition-steps">
+      <article><span>01</span><b>Ngày & khu vực</b><p>Hotel ở đâu, đi cả ngày hay nửa ngày, nhóm có trẻ nhỏ không.</p></article>
+      <article><span>02</span><b>Sea conditions</b><p>Gió, sóng và thông tin liên quan đến đúng vùng chuyến sẽ đi.</p></article>
+      <article><span>03</span><b>Operation</b><p>Cảng, boat, operator và restriction thực tế trong ngày.</p></article>
+      <article><span>04</span><b>Availability</b><p>Chỉ xác nhận khi chỗ và phương tiện thật sự được kiểm.</p></article>
+    </div>
+    <div class="conditions-foot"><span>Không có observation đủ chắc?</span><b>Tụi mình sẽ nói “cần kiểm tra thêm”, không bịa một trạng thái đẹp.</b></div>
+  </section>
+
+  <span class="anchor-target" id="local" aria-hidden="true"></span>
+  <span class="anchor-target" id="guides" aria-hidden="true"></span>
+  <section class="choose" id="choose">
+    <div class="choose-head">
+      <p class="eyebrow">CHƯA BIẾT CHỌN GÌ?</p>
+      <h2>Bắt đầu từ thứ bạn muốn cảm thấy trong ngày đó.</h2>
+    </div>
+    <div class="choose-list">
+      <button data-product="snorkeling"><span>01</span><b>Muốn xuống nước</b><small>Snorkeling</small><i>→</i></button>
+      <button data-product="private-cano"><span>02</span><b>Muốn đi riêng</b><small>Private Cano</small><i>→</i></button>
+      <button data-product="fishing"><span>03</span><b>Muốn câu cá</b><small>Fishing</small><i>→</i></button>
+      <button data-product="island-trips"><span>04</span><b>Muốn đi xa hơn</b><small>Island Hopping</small><i>→</i></button>
+      <button data-product="sunset"><span>05</span><b>Muốn chậm lại</b><small>Sunset</small><i>→</i></button>
+      <button data-product="yacht-charter"><span>06</span><b>Muốn riêng tư & thoải mái</b><small>Yacht</small><i>→</i></button>
+    </div>
+  </section>
+
+  <section class="availability" id="availability">
+    <div class="availability-copy">
+      <p class="eyebrow light">CHECK AVAILABILITY</p>
+      <h2>Chọn ngày đi.<br>Phần còn lại để tụi mình kiểm.</h2>
+      <p>Đây là request kiểm tra, chưa phải Instant Booking. JoTrip sẽ xác nhận sau khi kiểm boat/operator và điều kiện vận hành cần thiết.</p>
+      <blockquote>“Có những ngày biển không đáng đi. Tụi mình sẽ nói thẳng.”</blockquote>
+    </div>
+    <form class="availability-form" data-availability-form>
+      <label>Trải nghiệm
+        <select name="experience" required>
+          <option value="">Chọn trải nghiệm</option>
+          <option value="snorkeling">Snorkeling</option>
+          <option value="private-cano">Private Cano</option>
+          <option value="fishing">Fishing</option>
+          <option value="scuba-diving">Scuba Diving</option>
+          <option value="island-trips">Island Hopping</option>
+          <option value="yacht-charter">Yacht Charter</option>
+          <option value="sunset">Sunset</option>
+          <option value="squid-fishing">Câu mực đêm</option>
+        </select>
+      </label>
+      <div class="form-row">
+        <label>Ngày đi<input type="date" name="date" required></label>
+        <label>Số khách
+          <select name="pax"><option>1</option><option selected>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option value="8">7-8</option><option value="9">9+</option></select>
+        </label>
+      </div>
+      <label>Khu vực khách sạn
+        <select name="area"><option value="unknown">Chưa biết / nhập sau</option><option value="khem">Khem Beach</option><option value="an-thoi">An Thới</option><option value="bai-truong">Bãi Trường</option><option value="duong-dong">Dương Đông</option><option value="north">Bắc đảo</option></select>
+      </label>
+      <button type="submit">Tiếp tục kiểm tra <span>→</span></button>
+      <small>Không hiển thị “còn chỗ” nếu chưa kiểm tra thực tế.</small>
     </form>
-  </section>
-
-  <section class="product-section" id="experiences">
-    <div class="section-head">
-      <div>
-        <span>SEA EXPERIENCES</span>
-        <h2>Chọn sản phẩm trước.<br>Điều chỉnh hành trình sau.</h2>
-      </div>
-      <p>Mỗi sản phẩm có flow riêng. Đi riêng không giống đi ghép, fishing không giống snorkeling, scuba không thể dùng chung logic với tour đảo.</p>
-    </div>
-
-    <div class="product-grid">
-      <a class="product-card featured" href="/experiences/snorkeling/">
-        <div class="product-media"><img src="https://drive.google.com/thumbnail?id=1f3twuWnMWr-mbiSlHpT-sVdzWcPgKQec&sz=w1800" alt="Snorkeling ở Phú Quốc"></div>
-        <div class="product-body">
-          <div class="product-meta"><span>Shared / Private</span><span>Half / Full day</span></div>
-          <h3>Snorkeling</h3>
-          <p>Cho người muốn dành phần chính của chuyến đi ở dưới nước, thay vì chạy thật nhiều điểm.</p>
-          <div class="card-cta"><span>Xem sản phẩm</span><span>→</span></div>
-        </div>
-      </a>
-
-      <a class="product-card featured" href="/experiences/private-cano/">
-        <div class="product-media"><img src="https://drive.google.com/thumbnail?id=1B3flDvlDIIb6_6B7t8fsngwA_uck-xGF&sz=w1800" alt="Một nhóm khách trên cano ở Phú Quốc"></div>
-        <div class="product-body">
-          <div class="product-meta"><span>Private</span><span>Flexible route</span></div>
-          <h3>Private Cano</h3>
-          <p>Một ngày riêng, route đi theo nhóm khách, thời gian và điều kiện biển thay vì chạy cho đủ đảo.</p>
-          <div class="card-cta"><span>Thiết kế chuyến</span><span>→</span></div>
-        </div>
-      </a>
-
-      <a class="product-card" href="/experiences/fishing/">
-        <div class="product-media graphic"><b>05:00</b></div>
-        <div class="product-body">
-          <div class="product-meta"><span>An Thới</span><span>Morning / Afternoon</span></div>
-          <h3>Fishing</h3>
-          <p>Từ chuyến câu trong ngày đến nhóm muốn đi xa hơn. Không hứa trước con cá.</p>
-          <div class="card-cta"><span>Xem lựa chọn</span><span>→</span></div>
-        </div>
-      </a>
-
-      <a class="product-card" href="/experiences/scuba-diving/">
-        <div class="product-media graphic"><b>SCUBA</b></div>
-        <div class="product-body">
-          <div class="product-meta"><span>Instructor</span><span>Safety first</span></div>
-          <h3>Scuba Diving</h3>
-          <p>Flow riêng cho người mới và certified diver, với yêu cầu an toàn và thiết bị rõ ràng.</p>
-          <div class="card-cta"><span>Xem scuba</span><span>→</span></div>
-        </div>
-      </a>
-
-      <a class="product-card" href="/experiences/island-trips/">
-        <div class="product-media"><img src="https://drive.google.com/thumbnail?id=1ZKk6C4v-ynKGGit7P1Kzie_Q85nujG-c&sz=w1600" alt="Đảo nhỏ phía Nam Phú Quốc"></div>
-        <div class="product-body">
-          <div class="product-meta"><span>Shared / Private</span><span>South islands</span></div>
-          <h3>Island Hopping</h3>
-          <p>Cho người muốn kết hợp nhiều điểm nhưng vẫn biết điểm nào đáng ở lâu hơn.</p>
-          <div class="card-cta"><span>Xem route</span><span>→</span></div>
-        </div>
-      </a>
-
-      <a class="product-card" href="/experiences/yacht-charter/">
-        <div class="product-media graphic"><b>YACHT</b></div>
-        <div class="product-body">
-          <div class="product-meta"><span>Private</span><span>Vessel first</span></div>
-          <h3>Yacht Charter</h3>
-          <p>Chọn tàu, số khách, thời lượng và cách dùng ngày trên biển trước khi chốt hành trình.</p>
-          <div class="card-cta"><span>Xem du thuyền</span><span>→</span></div>
-        </div>
-      </a>
-
-      <a class="product-card" href="/experiences/sunset/">
-        <div class="product-media"><img src="https://drive.google.com/thumbnail?id=1yu-aC2oZOLyrqcZ4nXQKe2IIRYWWBPpy&sz=w1600" alt="Một buổi chiều bên biển Phú Quốc"></div>
-        <div class="product-body">
-          <div class="product-meta"><span>Afternoon</span><span>Slow pace</span></div>
-          <h3>Sunset</h3>
-          <p>Một buổi chiều ngắn hơn, ít kỹ thuật hơn, dành cho người không muốn chạy lịch trình dày.</p>
-          <div class="card-cta"><span>Xem sunset</span><span>→</span></div>
-        </div>
-      </a>
-
-      <a class="product-card" href="/experiences/squid-fishing/">
-        <div class="product-media graphic"><b>NIGHT</b></div>
-        <div class="product-body">
-          <div class="product-meta"><span>Evening</span><span>Local sea life</span></div>
-          <h3>Câu mực đêm</h3>
-          <p>Một sản phẩm buổi tối riêng, không dùng ảnh hay lời hứa bắt được mực để bán chuyến.</p>
-          <div class="card-cta"><span>Xem chuyến đêm</span><span>→</span></div>
-        </div>
-      </a>
-    </div>
-  </section>
-
-  <section class="buying-strip" id="how">
-    <div class="buying-inner">
-      <article><b>1. Chọn trải nghiệm</b><p>Snorkeling, fishing, cano riêng, scuba, yacht hay một buổi chiều trên biển.</p></article>
-      <article><b>2. JoTrip kiểm tra</b><p>Ngày đi, khu vực khách sạn, vận hành, gió, sóng và điều kiện liên quan.</p></article>
-      <article><b>3. Xác nhận chuyến</b><p>Chỉ sau khi boat/operator và điều kiện cần thiết đã được xác nhận.</p></article>
-    </div>
-  </section>
-
-  <section class="local-proof" id="local">
-    <div class="intro">
-      <span class="finder-kicker">TẠI SAO CẦN NGƯỜI Ở ĐÂY?</span>
-      <h2>Để sản phẩm bán ra hợp với ngày bạn thật sự đi.</h2>
-      <p>Không phải để kể một câu chuyện dài về JoTrip. Kiến thức địa phương chỉ có giá trị khi nó giúp chọn chuyến, đổi giờ, đổi route hoặc nói thẳng rằng hôm đó không đáng đi.</p>
-    </div>
-    <div class="proof-list">
-      <article><b>01</b><p>Ở Khem Beach, đi An Thới thường thuận hơn nhiều khu vực khác trên đảo.</p></article>
-      <article><b>02</b><p>Đi cùng trẻ nhỏ? Hai điểm tốt thường dễ chịu hơn bốn điểm vội.</p></article>
-      <article><b>03</b><p>Trời xanh chưa chắc nước trong. Snorkeling phải nhìn đúng điều kiện tại vùng xuống nước.</p></article>
-      <article><b>04</b><p>Nếu gió chiều tăng, tụi mình sẽ đề nghị đi sáng hoặc đổi kế hoạch.</p></article>
-    </div>
-  </section>
-
-  <section class="final-cta">
-    <span>JOTRIP SEA / PHÚ QUỐC</span>
-    <h2>Biết mình muốn làm gì rồi thì bắt đầu chọn chuyến.</h2>
-    <a href="#finder">Kiểm tra chuyến →</a>
   </section>
 </main>
 
-<footer class="shop-footer">
-  <img src="https://drive.google.com/thumbnail?id=1aE5Ywq2taDkSDppjFFXPFNqDOqF47ond&sz=w500" alt="JoTrip">
-  <p>Người bản địa đưa bạn đi xa hơn điểm đến.</p>
-  <a href="#top">Lên đầu ↑</a>
+<footer class="sea-footer">
+  <div><img src="https://drive.google.com/thumbnail?id=1aE5Ywq2taDkSDppjFFXPFNqDOqF47ond&amp;sz=w500" alt="JoTrip" decoding="async"><p>Người bản địa đưa bạn đi xa hơn điểm đến.</p></div>
+  <div class="footer-links"><a href="#experiences">Trải nghiệm</a><a href="#availability">Check Availability</a><a href="#top">Lên đầu ↑</a></div>
 </footer>
-<script src="/assets/app.js" defer></script>
+<a class="mobile-availability" href="#availability">Check Availability <span>→</span></a>
+<script src="/assets/home-lock.js" defer></script>
 </body>
 </html>
