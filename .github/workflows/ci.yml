@@ -22,3 +22,7 @@ jobs:
           python-version: '3.12'
       - name: Validate routes, links and preview guardrails
         run: python scripts/validate_static.py
+      - name: Check JavaScript syntax
+        run: |
+          node --check assets/app.js
+          node --check assets/booking.js
