@@ -10,6 +10,7 @@ ROOT = Path(__file__).resolve().parents[1]
 REQUIRED = [
     ROOT / "index.html",
     ROOT / "booking" / "index.html",
+    ROOT / "request" / "index.html",
     ROOT / "experiences" / "fishing" / "index.html",
     ROOT / "experiences" / "snorkeling" / "index.html",
     ROOT / "experiences" / "scuba-diving" / "index.html",
