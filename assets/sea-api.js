@@ -1,7 +1,7 @@
 (() => {
   'use strict';
 
-  const API_BASE = 'https://br-fancy-paper-b3sme457-jotripseaapi.compute.c-4.ap-southeast-1.aws.neon.tech';
+  const API_BASE = 'https://br-fancy-paper-b3sme457-jtseaapi.compute.c-4.ap-southeast-1.aws.neon.tech';
   const REQUEST_TIMEOUT_MS = 12000;
 
   async function request(path, options = {}) {
