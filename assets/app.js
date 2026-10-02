@@ -8,6 +8,13 @@ visualStyles.rel = 'stylesheet';
 visualStyles.href = '/assets/visual-v2.css';
 document.head.appendChild(visualStyles);
 
+if (document.body.classList.contains('home-v3')) {
+  const homeV3Styles = document.createElement('link');
+  homeV3Styles.rel = 'stylesheet';
+  homeV3Styles.href = '/assets/home-v3.css';
+  document.head.appendChild(homeV3Styles);
+}
+
 const toggle = document.querySelector('[data-nav-toggle]');
 const nav = document.querySelector('[data-nav]');
 if (toggle && nav) toggle.addEventListener('click', () => nav.classList.toggle('open'));
