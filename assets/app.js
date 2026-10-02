@@ -14,11 +14,118 @@ document.querySelectorAll('input[type="date"]').forEach(input => {
   if (!input.min) input.min = localToday;
 });
 
+document.querySelectorAll('[data-form-note]').forEach(note => {
+  note.textContent = 'Bước tiếp theo tạo request để JoTrip kiểm tra điều kiện, vận hành và availability thực tế.';
+});
+
+function sitePrefix() {
+  const script = [...document.scripts].find(item => /\/assets\/app\.js(?:\?|$)/.test(item.src));
+  if (!script) return '';
+  const url = new URL(script.src);
+  return url.pathname.replace(/\/assets\/app\.js$/, '');
+}
+
+const basePrefix = sitePrefix();
+
+function serviceFromPath() {
+  const match = window.location.pathname.match(/\/experiences\/([^/]+)\/?/);
+  return match ? match[1] : '';
+}
+
+function labelText(control) {
+  const label = control.closest('label');
+  if (label) return label.textContent.toLowerCase();
+  const fieldset = control.closest('fieldset');
+  const legend = fieldset?.querySelector('legend');
+  return legend ? legend.textContent.toLowerCase() : '';
+}
+
+function fieldKey(control) {
+  const explicit = {
+    date: 'date',
+    pax: 'pax',
+    guests: 'pax',
+    guest: 'pax',
+    hotel: 'area',
+    area: 'area',
+    slot: 'slot',
+    level: 'level',
+    style: 'style',
+    priority: 'priority',
+    note: 'detail',
+    notes: 'detail'
+  };
+  if (control.dataset.field) return control.dataset.field;
+  if (control.name && explicit[control.name]) return explicit[control.name];
+
+  const text = labelText(control);
+  if (text.includes('ngày')) return 'date';
+  if (text.includes('số khách')) return 'pax';
+  if (text.includes('khu vực')) return 'area';
+  if (text.includes('khung giờ')) return 'slot';
+  if (text.includes('trình độ')) return 'level';
+  if (text.includes('kiểu đi') || text.includes('kiểu ngày') || text.includes('mức riêng tư')) return 'style';
+  if (text.includes('ưu tiên')) return 'priority';
+  if (text.includes('ghi chú')) return 'detail';
+  return '';
+}
+
+function setControlValue(control, value) {
+  if (!value) return;
+  if (control.type === 'radio' || control.type === 'checkbox') {
+    control.checked = control.value === value;
+    return;
+  }
+  if (control.tagName === 'SELECT') {
+    const exact = [...control.options].find(option => option.value === value || option.textContent.trim() === value);
+    const numeric = [...control.options].find(option => option.textContent.includes(value));
+    const option = exact || numeric;
+    if (option) control.value = option.value;
+    return;
+  }
+  control.value = value;
+}
+
+function prefillProductForm(form) {
+  const incoming = new URLSearchParams(window.location.search);
+  if (![...incoming.keys()].length) return;
+  form.querySelectorAll('input,select,textarea').forEach(control => {
+    const key = fieldKey(control);
+    if (!key) return;
+    const value = incoming.get(key);
+    if (value) setControlValue(control, value);
+  });
+}
+
+function collectProductRequest(form) {
+  const params = new URLSearchParams();
+  const service = serviceFromPath();
+  if (service) params.set('service', service);
+  params.set('intent', 'availability');
+
+  form.querySelectorAll('input,select,textarea').forEach(control => {
+    if (control.disabled || ['submit', 'button'].includes(control.type)) return;
+    if ((control.type === 'radio' || control.type === 'checkbox') && !control.checked) return;
+    const key = fieldKey(control);
+    const value = String(control.value || '').trim();
+    if (key && value) params.set(key, value);
+  });
+
+  if (service === 'private-cano' && !params.has('priority')) {
+    const activeChoice = document.querySelector('.builder-options .choice.active');
+    if (activeChoice) params.set('priority', activeChoice.textContent.trim());
+  }
+
+  return params;
+}
+
 document.querySelectorAll('[data-demo-form]').forEach(form => {
+  prefillProductForm(form);
   form.addEventListener('submit', event => {
     event.preventDefault();
-    const note = form.querySelector('[data-form-note]');
-    if (note) note.textContent = 'Đã ghi nhận lựa chọn trên giao diện preview. Chưa gửi request thật.';
+    const params = collectProductRequest(form);
+    const bookingPath = `${basePrefix}/booking/?${params.toString()}`;
+    window.location.href = bookingPath;
   });
 });
 
@@ -55,6 +162,6 @@ if (tripFinder) {
       if (value) params.set(key, value);
     });
     params.set('intent', 'availability');
-    window.location.href = `/experiences/${experience}/?${params.toString()}`;
+    window.location.href = `${basePrefix}/experiences/${experience}/?${params.toString()}`;
   });
 }
