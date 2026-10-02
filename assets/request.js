@@ -140,7 +140,7 @@ function renderTimeline(events = []) {
     strong.textContent = 'Đã nhận request';
     p.textContent = 'JoTrip đang chuẩn bị kiểm tra.';
     body.append(strong, p);
-    li.append(document.createElement('span'), body);
+    li.append(body);
     node.appendChild(li);
     return;
   }
@@ -154,7 +154,7 @@ function renderTimeline(events = []) {
     p.textContent = event.message || 'JoTrip đã cập nhật request.';
     time.textContent = formatTime(event.created_at);
     body.append(strong, p, time);
-    li.append(document.createElement('span'), body);
+    li.append(body);
     node.appendChild(li);
   });
 }
