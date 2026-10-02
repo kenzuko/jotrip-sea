@@ -1,6 +1,11 @@
 const isResetHome = document.body.classList.contains('home-reset');
 
-if (!isResetHome) {
+if (isResetHome) {
+  const resetHotfix = document.createElement('link');
+  resetHotfix.rel = 'stylesheet';
+  resetHotfix.href = '/assets/home-reset-hotfix.css';
+  document.head.appendChild(resetHotfix);
+} else {
   const serviceStyles = document.createElement('link');
   serviceStyles.rel = 'stylesheet';
   serviceStyles.href = '/assets/service-pages.css';
