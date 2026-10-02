@@ -1,3 +1,8 @@
+const serviceStyles = document.createElement('link');
+serviceStyles.rel = 'stylesheet';
+serviceStyles.href = '/assets/service-pages.css';
+document.head.appendChild(serviceStyles);
+
 const toggle = document.querySelector('[data-nav-toggle]');
 const nav = document.querySelector('[data-nav]');
 if (toggle && nav) toggle.addEventListener('click', () => nav.classList.toggle('open'));

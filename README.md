@@ -11,8 +11,14 @@ UI foundation and visual system only. No production cutover, DNS change, WordPre
 ### Implemented preview routes
 
 - `/` - layered homepage using real JoTrip/Phu Quoc assets where available.
-- `/experiences/fishing/` - first service page built as the visual master for service-page quality.
-- `/experiences/snorkeling/` - second page proving the anatomy can differ by service.
+- `/experiences/fishing/` - first service-page visual master.
+- `/experiences/snorkeling/` - water/visibility-first page.
+- `/experiences/scuba-diving/` - safety/certification-first page.
+- `/experiences/private-cano/` - build-your-day flow.
+- `/experiences/island-trips/` - shared vs private and time-on-island flow.
+- `/experiences/yacht-charter/` - vessel-first flow.
+- `/experiences/sunset/` - shorter cinematic time-based flow.
+- `/experiences/squid-fishing/` - night/local-experience flow.
 
 ### Principles
 
