@@ -1,0 +1,1 @@
+Service pages share the homepage visual DNA and are rendered from service.js data via ?tour=<id>.
