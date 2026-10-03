@@ -2,211 +2,94 @@
 <html lang="vi">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <meta name="theme-color" content="#f5fbfc" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <meta name="theme-color" content="#f6fbff" />
   <meta name="description" content="JoTrip Sea - trải nghiệm biển Phú Quốc cùng người bản địa." />
   <title>JoTrip Sea - Đi biển cùng người bản địa</title>
-  <link rel="preconnect" href="https://images.unsplash.com" />
   <link rel="preconnect" href="https://images.pexels.com" />
+  <link rel="preconnect" href="https://images.unsplash.com" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
   <header class="site-header" id="top">
-    <a class="brand" href="#top" aria-label="JoTrip Sea">
-      <img src="assets/jotrip-logo.png" alt="JoTrip" />
-      <span class="brand-sea">SEA</span>
+    <a class="brand" href="#top" aria-label="JoTrip Sea - Trang chủ">
+      <img src="assets/jotrip-logo-clean.svg" alt="JoTrip" />
+      <span>SEA</span>
     </a>
-    <nav class="desktop-nav" aria-label="Điều hướng chính">
-      <a href="#experiences">Trải nghiệm</a>
-      <a href="#local-story">Câu chuyện biển</a>
-      <a href="#choose">Chọn chuyến</a>
-      <a href="#about">Về JoTrip</a>
+    <nav class="main-nav" aria-label="Điều hướng chính">
+      <button class="nav-item" type="button" data-nav="experiences">Trải nghiệm <span>⌄</span></button>
+      <button class="nav-item" type="button" data-nav="destinations">Điểm đến <span>⌄</span></button>
+      <button class="nav-item" type="button" data-nav="guide">Cẩm nang <span>⌄</span></button>
+      <a class="nav-item" href="#weather">Thời tiết <span>⌄</span></a>
+      <a class="nav-item" href="#local">Di chuyển</a>
+      <a class="nav-item" href="#about">Về chúng tôi</a>
     </nav>
-    <div class="header-actions">
-      <button class="lang-btn" type="button" aria-label="Ngôn ngữ">VI</button>
-      <button class="primary-btn compact" type="button" data-open-request>Đặt trải nghiệm</button>
-      <button class="menu-btn" type="button" aria-expanded="false" aria-controls="mobile-menu">☰</button>
+    <div class="header-tools">
+      <button class="round-tool" type="button" aria-label="Tìm kiếm" data-focus-search>⌕</button>
+      <button class="language" type="button" aria-label="Ngôn ngữ">🇻🇳 <span>VI</span> ⌄</button>
+      <button class="book-btn" type="button" data-open-request>Đặt trải nghiệm</button>
+      <button class="mobile-menu-btn" type="button" aria-label="Mở menu" aria-expanded="false">☰</button>
+    </div>
+    <div class="mega-menu" id="menu-experiences" hidden>
+      <button data-filter="fishing">Câu cá lớn</button><button data-filter="snorkeling">Lặn biển</button><button data-filter="private">Cano riêng</button><button data-filter="islands">Tour 3 - 4 đảo</button><button data-filter="yacht">Du thuyền</button><button data-filter="squid">Câu mực đêm</button>
+    </div>
+    <div class="mega-menu" id="menu-destinations" hidden>
+      <a href="#experiences">Nam đảo - An Thới</a><a href="#local">Dương Đông</a><a href="#local">Hòn Thơm & cụm đảo phía Nam</a>
+    </div>
+    <div class="mega-menu" id="menu-guide" hidden>
+      <a href="#local">Đi biển theo mùa</a><a href="#local">Đi với trẻ nhỏ</a><a href="#local">Chọn private hay đi ghép</a>
     </div>
   </header>
 
-  <div id="mobile-menu" class="mobile-menu" hidden>
-    <a href="#experiences">Trải nghiệm</a>
-    <a href="#local-story">Câu chuyện biển</a>
-    <a href="#choose">Chọn chuyến</a>
-    <a href="#about">Về JoTrip</a>
-  </div>
-
   <main>
     <section class="hero" aria-labelledby="hero-title">
-      <div class="hero-overlay"></div>
+      <div class="hero-media" aria-hidden="true"></div><div class="hero-left-fade" aria-hidden="true"></div>
       <div class="hero-content">
-        <p class="eyebrow light">PHÚ QUỐC · BIỂN · NGƯỜI BẢN ĐỊA</p>
+        <p class="hero-kicker">PHÚ QUỐC</p>
         <h1 id="hero-title">Đi biển cùng<br />người bản địa.</h1>
-        <p class="hero-copy">Không bắt đầu bằng một danh sách tour. Bắt đầu bằng việc bạn muốn một ngày trên biển như thế nào.</p>
-
-        <div class="hero-search" role="search">
-          <span class="search-icon">⌕</span>
-          <input id="experience-search" type="search" placeholder="Bạn muốn câu cá, lặn biển hay một ngày riêng?" aria-label="Tìm trải nghiệm" />
-          <button class="search-submit" type="button" aria-label="Tìm">→</button>
-        </div>
-
-        <div class="hero-chips" aria-label="Gợi ý nhanh">
-          <button type="button" data-filter="fishing">Câu cá lớn</button>
-          <button type="button" data-filter="snorkeling">Lặn biển</button>
-          <button type="button" data-filter="private">Cano riêng</button>
-          <button type="button" data-filter="island">Tour đảo</button>
-          <button type="button" data-filter="sunset">Hoàng hôn</button>
+        <p class="hero-sub">Trải nghiệm thật, câu chuyện thật và những góc biển đẹp nhất của Phú Quốc - theo cách riêng của bạn.</p>
+        <div class="search-box" role="search"><span aria-hidden="true">⌕</span><input id="experience-search" type="search" placeholder="Bạn muốn trải nghiệm gì ở Phú Quốc?" aria-label="Tìm trải nghiệm" /><button type="button" class="search-go" aria-label="Tìm">→</button></div>
+        <div class="hero-chips" aria-label="Gợi ý trải nghiệm">
+          <button type="button" data-filter="fishing">Câu cá lớn</button><button type="button" data-filter="snorkeling">Lặn biển</button><button type="button" data-filter="private">Cano riêng</button><button type="button" data-filter="islands">Tour đảo</button><button type="button" data-filter="yacht">Du thuyền</button><button type="button" data-filter="squid">Câu mực đêm</button>
         </div>
       </div>
-
-      <aside class="hero-card" aria-label="Chọn nhanh trải nghiệm">
-        <p class="eyebrow">CHỌN NHANH</p>
-        <h2>Hôm nay bạn muốn biển theo cách nào?</h2>
-        <button type="button" data-jump="private">Một ngày riêng tư, linh hoạt <span>→</span></button>
-        <button type="button" data-jump="fishing">Ra xa bờ, tập trung vào câu cá <span>→</span></button>
-        <button type="button" data-jump="snorkeling">Xuống nước, ngắm thế giới bên dưới <span>→</span></button>
-        <p class="microcopy">JoTrip sẽ kiểm tra lịch và điều kiện phù hợp trước khi xác nhận.</p>
+      <aside class="weather-card" id="weather" aria-live="polite">
+        <div class="weather-head"><div><strong>Phú Quốc lúc này</strong><span>Dương Đông</span></div><span class="weather-status" id="weather-status">Đang tải</span></div>
+        <div class="weather-main"><div class="weather-icon" id="weather-icon">☀︎</div><div><div class="temp"><span id="temperature">--</span>°C</div><div class="condition" id="weather-condition">Đang cập nhật dữ liệu thực tế</div></div></div>
+        <div class="weather-metrics"><div><span>◌</span><small>Gió</small><strong id="wind">-- m/s</strong></div><div><span>≋</span><small>Sóng</small><strong id="wave">-- m</strong></div><div><span>☂</span><small>Mưa</small><strong id="rain">-- mm</strong></div></div>
+        <a class="weather-link" href="https://weather.openphuquoc.com/" target="_blank" rel="noopener">Xem chi tiết thời tiết <span>→</span></a>
       </aside>
     </section>
 
-    <section class="category-strip" aria-label="Danh mục trải nghiệm">
-      <button class="category" type="button" data-filter="fishing">
-        <span class="category-image"><img src="https://images.unsplash.com/photo-1634043270873-f2f830e5d4bf?auto=format&fit=crop&q=78&w=500" alt="Thuyền câu cá trên biển Phú Quốc" /></span>
-        <span>Câu cá lớn</span>
-      </button>
-      <button class="category" type="button" data-filter="snorkeling">
-        <span class="category-image"><img src="https://images.unsplash.com/photo-1687708167559-edc5ee364615?auto=format&fit=crop&q=78&w=500" alt="Lặn ngắm san hô tại Phú Quốc" /></span>
-        <span>Lặn biển</span>
-      </button>
-      <button class="category" type="button" data-filter="private">
-        <span class="category-image"><img src="https://images.pexels.com/photos/37571067/pexels-photo-37571067/free-photo-of-boats-on-turquoise-waters-in-phu-quoc-vietnam.jpeg?auto=compress&cs=tinysrgb&w=500" alt="Thuyền trên làn nước xanh Phú Quốc" /></span>
-        <span>Cano riêng</span>
-      </button>
-      <button class="category" type="button" data-filter="island">
-        <span class="category-image"><img src="https://images.pexels.com/photos/37045534/pexels-photo-37045534/free-photo-of-vista-aerea-de-una-estructura-flotante-cerca-de-una-isla-tropical.jpeg?auto=compress&cs=tinysrgb&w=500" alt="Biển đảo Phú Quốc nhìn từ trên cao" /></span>
-        <span>Tour đảo</span>
-      </button>
-      <button class="category" type="button" data-filter="sunset">
-        <span class="category-image"><img src="https://images.pexels.com/photos/37571062/pexels-photo-37571062/free-photo-of-beautiful-sunset-over-phu-quoc-sea.jpeg?auto=compress&cs=tinysrgb&w=500" alt="Hoàng hôn trên biển Phú Quốc" /></span>
-        <span>Hoàng hôn</span>
-      </button>
-      <button class="category" type="button" data-filter="night">
-        <span class="category-image night-orb"><span>✦</span></span>
-        <span>Câu mực đêm</span>
-      </button>
+    <section class="category-rail" aria-label="Nhóm trải nghiệm">
+      <button class="category" type="button" data-filter="fishing"><span class="cat-photo"><img src="https://images.unsplash.com/photo-1634043270873-f2f830e5d4bf?auto=format&fit=crop&q=82&w=500" alt="Câu cá trên biển" /></span><span>Câu cá lớn</span></button>
+      <button class="category" type="button" data-filter="snorkeling"><span class="cat-photo"><img src="https://images.unsplash.com/photo-1687708167559-edc5ee364615?auto=format&fit=crop&q=82&w=500" alt="Lặn biển" /></span><span>Lặn biển</span></button>
+      <button class="category" type="button" data-filter="private"><span class="cat-photo"><img src="https://images.pexels.com/photos/37571067/pexels-photo-37571067/free-photo-of-boats-on-turquoise-waters-in-phu-quoc-vietnam.jpeg?auto=compress&cs=tinysrgb&w=500" alt="Cano riêng trên biển" /></span><span>Cano riêng</span></button>
+      <button class="category" type="button" data-filter="islands"><span class="cat-photo"><img src="https://images.pexels.com/photos/37045534/pexels-photo-37045534/free-photo-of-vista-aerea-de-una-estructura-flotante-cerca-de-una-isla-tropical.jpeg?auto=compress&cs=tinysrgb&w=500" alt="Tour đảo Phú Quốc" /></span><span>Tour đảo</span></button>
+      <button class="category" type="button" data-filter="yacht"><span class="cat-photo"><img src="https://images.unsplash.com/photo-1567899378494-47b22a2ae96a?auto=format&fit=crop&q=82&w=500" alt="Du thuyền" /></span><span>Du thuyền</span></button>
+      <button class="category" type="button" data-filter="squid"><span class="cat-photo"><img src="https://images.unsplash.com/photo-1517825738774-7de9363ef735?auto=format&fit=crop&q=82&w=500" alt="Câu mực đêm" /></span><span>Câu mực đêm</span></button>
+      <button class="category" type="button" data-filter="sunset"><span class="cat-photo"><img src="https://images.pexels.com/photos/37571062/pexels-photo-37571062/free-photo-of-beautiful-sunset-over-phu-quoc-sea.jpeg?auto=compress&cs=tinysrgb&w=500" alt="Ngắm hoàng hôn" /></span><span>Ngắm hoàng hôn</span></button>
+      <button class="category" type="button" data-open-request><span class="cat-photo"><img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&q=82&w=500" alt="Thiết kế chuyến đi riêng" /></span><span>Thiết kế riêng</span></button>
     </section>
 
-    <section class="section experiences" id="experiences">
-      <div class="section-heading">
-        <div>
-          <p class="eyebrow">TRẢI NGHIỆM NỔI BẬT</p>
-          <h2>Chọn một chuyến biển thật sự hợp với bạn.</h2>
-        </div>
-        <button class="text-btn" type="button" data-clear-filter>Xem tất cả <span>→</span></button>
-      </div>
-      <div class="experience-grid" id="experience-grid"></div>
-      <p class="empty-state" id="empty-state" hidden>Chưa thấy trải nghiệm phù hợp. Thử một từ khóa khác hoặc xem tất cả.</p>
+    <section class="featured" id="experiences">
+      <div class="section-title-row"><div><p class="section-kicker">TRẢI NGHIỆM NỔI BẬT</p><h2>Đi cùng người bản địa. Những trải nghiệm thật.</h2></div><button class="view-all" type="button" data-clear-filter>Xem tất cả <span>→</span></button></div>
+      <div class="tour-strip" id="tour-strip"></div><p class="empty-state" id="empty-state" hidden>Chưa thấy chuyến phù hợp với từ khóa này.</p>
     </section>
 
-    <section class="local-story section" id="local-story">
-      <div class="story-image" role="img" aria-label="Biển Phú Quốc"></div>
-      <div class="story-copy">
-        <p class="eyebrow">CÂU CHUYỆN BẢN ĐỊA</p>
-        <h2>Một chuyến biển không chỉ là chọn đảo.</h2>
-        <p>Người địa phương nhìn gió, mặt nước, thời gian rời bến và nhóm khách trước khi chốt hành trình. Có ngày nên đi xa. Có ngày nên đổi hướng. Có ngày chỉ cần một bãi yên và đủ thời gian ở lại.</p>
-        <p>JoTrip không cố nhồi nhiều điểm nhất vào một ngày. Tụi mình bắt đầu từ điều bạn thật sự muốn làm trên biển, rồi mới thiết kế chuyến đi.</p>
-        <button class="secondary-btn" type="button" data-open-request>Kể JoTrip nghe chuyến đi bạn muốn <span>→</span></button>
-      </div>
+    <section class="promo-grid" id="local">
+      <article class="promo promo-today"><div class="promo-shade"></div><div class="promo-copy"><h3>Hôm nay còn kịp gì?</h3><p>Gợi ý theo thời gian thực - dựa trên thời tiết, biển và những gì đang đẹp nhất lúc này.</p><button type="button" data-open-request>Xem gợi ý hôm nay <span>→</span></button></div></article>
+      <article class="promo promo-guide"><div class="promo-shade"></div><div class="promo-copy"><h3>Khám phá Phú Quốc</h3><p>Cẩm nang, điểm đến, ẩm thực, văn hóa và những câu chuyện về đảo.</p><button type="button" data-open-guide>Đọc cẩm nang <span>→</span></button></div></article>
+      <article class="promo promo-food"><div class="promo-shade"></div><div class="promo-copy"><h3>Bây giờ ăn gì?</h3><p>Gợi ý món ngon gần bạn, ưu tiên những món mang chất Phú Quốc.</p><button type="button" data-open-guide>Xem gợi ý món ăn <span>→</span></button></div></article>
     </section>
 
-    <section class="section choose-section" id="choose">
-      <div class="section-heading">
-        <div>
-          <p class="eyebrow">CHỌN THEO NHỊP CỦA BẠN</p>
-          <h2>Không phải ai cũng muốn một ngày trên biển giống nhau.</h2>
-        </div>
-      </div>
-      <div class="mood-grid">
-        <article class="mood mood-private">
-          <div>
-            <span class="mood-kicker">RIÊNG TƯ</span>
-            <h3>Một chiếc cano. Một ngày theo ý bạn.</h3>
-            <p>Linh hoạt nhịp đi, thời gian dừng và cách bạn muốn tận hưởng biển.</p>
-            <button type="button" data-jump="private">Xem Cano riêng →</button>
-          </div>
-        </article>
-        <article class="mood mood-underwater">
-          <div>
-            <span class="mood-kicker">DƯỚI MẶT NƯỚC</span>
-            <h3>Đi xuống để thấy một Phú Quốc khác.</h3>
-            <p>Ưu tiên trải nghiệm dưới nước thay vì chạy thật nhiều điểm.</p>
-            <button type="button" data-jump="snorkeling">Xem Lặn biển →</button>
-          </div>
-        </article>
-        <article class="mood mood-sunset">
-          <div>
-            <span class="mood-kicker">CHIỀU MUỘN</span>
-            <h3>Ở lại với biển cho tới khi trời dịu xuống.</h3>
-            <p>Ít lịch trình hơn, nhiều thời gian hơn cho khoảnh khắc cuối ngày.</p>
-            <button type="button" data-jump="sunset">Xem Hoàng hôn →</button>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <section class="request-band" id="about">
-      <div>
-        <p class="eyebrow light">JOTRIP SEA</p>
-        <h2>Bạn không cần biết tên tour.</h2>
-        <p>Chỉ cần nói nhóm của bạn có bao nhiêu người, thích gì và muốn một ngày như thế nào. Phần còn lại để JoTrip cùng bạn thiết kế.</p>
-      </div>
-      <button class="primary-btn large" type="button" data-open-request>Thiết kế chuyến đi <span>→</span></button>
-    </section>
+    <section class="local-story" id="about"><div><p class="section-kicker">CÂU CHUYỆN BẢN ĐỊA</p><h2>Người ở đảo không nhìn biển bằng một tấm lịch tour.</h2></div><p>Gió đổi, sóng đổi, nhóm khách cũng khác nhau. Có ngày nên đi xa, có ngày nên đổi hướng, có ngày ở lại một bãi yên lại hay hơn chạy thật nhiều điểm. JoTrip dùng hiểu biết địa phương để thiết kế chuyến đi hợp với người đi cùng bạn - rồi mới tới chuyện đi đâu.</p></section>
   </main>
 
-  <footer class="site-footer">
-    <div class="footer-brand">
-      <img src="assets/jotrip-logo.png" alt="JoTrip" />
-      <span>SEA</span>
-    </div>
-    <p>Trải nghiệm biển Phú Quốc cùng người bản địa.</p>
-    <p class="source-note">Ảnh minh họa Phú Quốc từ Pexels và Unsplash, dùng theo giấy phép tương ứng. Không hiển thị giá hay tình trạng chỗ khi chưa được xác nhận.</p>
-  </footer>
+  <footer class="site-footer"><div class="footer-brand"><img src="assets/jotrip-logo-clean.svg" alt="JoTrip" /><span>SEA</span></div><p>Trải nghiệm biển Phú Quốc cùng người bản địa.</p></footer>
 
-  <dialog class="request-dialog" id="request-dialog">
-    <form method="dialog" class="request-shell" id="request-form">
-      <button class="dialog-close" value="cancel" aria-label="Đóng">×</button>
-      <p class="eyebrow">CHECK AVAILABILITY</p>
-      <h2>Cho JoTrip biết chuyến đi bạn đang nghĩ tới.</h2>
-      <div class="form-grid">
-        <label>Trải nghiệm
-          <select id="request-experience" name="experience">
-            <option value="">Chưa chắc - cần JoTrip gợi ý</option>
-          </select>
-        </label>
-        <label>Ngày dự kiến
-          <input name="date" type="date" />
-        </label>
-        <label>Số khách
-          <input name="pax" type="number" min="1" inputmode="numeric" placeholder="Ví dụ: 4" />
-        </label>
-        <label>Cách đi
-          <select name="style">
-            <option>Chưa chắc</option>
-            <option>Muốn riêng tư</option>
-            <option>Có thể đi ghép</option>
-          </select>
-        </label>
-        <label class="full">Bạn muốn điều gì nhất trong ngày đó?
-          <textarea name="note" rows="4" placeholder="Ví dụ: gia đình có trẻ nhỏ, muốn bơi nhiều, không muốn chạy quá nhiều điểm..."></textarea>
-        </label>
-      </div>
-      <p class="form-note">Form này chỉ ghi nhận yêu cầu. JoTrip chỉ xác nhận sau khi kiểm tra lịch vận hành và điều kiện phù hợp.</p>
-      <button class="primary-btn full-width" type="submit" value="default">Gửi yêu cầu <span>→</span></button>
-      <p id="request-feedback" class="request-feedback" role="status"></p>
-    </form>
-  </dialog>
-
+  <dialog class="request-dialog" id="request-dialog"><form method="dialog" class="request-shell" id="request-form"><button class="dialog-close" value="cancel" aria-label="Đóng">×</button><p class="section-kicker">CHECK AVAILABILITY</p><h2>Cho JoTrip biết chuyến biển bạn đang nghĩ tới.</h2><div class="request-grid"><label>Trải nghiệm<select id="request-experience" name="experience"><option value="">Cần JoTrip gợi ý</option></select></label><label>Ngày dự kiến<input name="date" type="date" /></label><label>Số khách<input name="pax" type="number" min="1" placeholder="Ví dụ: 4" /></label><label>Kiểu đi<select name="style"><option>Chưa chắc</option><option>Private</option><option>Đi ghép</option></select></label><label class="full">Điều bạn quan tâm nhất<textarea name="note" rows="4" placeholder="Ví dụ: có trẻ nhỏ, thích bơi nhiều, muốn câu cá, muốn ít di chuyển..."></textarea></label></div><button class="submit-request" type="submit">Gửi yêu cầu <span>→</span></button><p class="request-feedback" id="request-feedback" role="status"></p></form></dialog>
+  <dialog class="tour-dialog" id="tour-dialog"><article class="tour-detail-shell"><button class="dialog-close" type="button" data-close-tour aria-label="Đóng">×</button><div id="tour-detail-content"></div></article></dialog>
   <script src="app.js"></script>
 </body>
 </html>
